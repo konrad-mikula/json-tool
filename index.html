@@ -4,15 +4,13 @@
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-  
+
 <h1>JSON Flattener</h1>
 
 <div class="form-group">
     <label>Mode:</label>
     <label class="radio-inline">
         <input id="flatten" name="mode" type="radio" value="flatten" checked="">Flatten</label>
-    <label class="radio-inline">
-        <input name="mode" type="radio" value="unflatten">Unflatten</label>
 </div>
 <div class="form-group">
     <label>Input:</label>
@@ -37,7 +35,7 @@
             result[prop] = cur;
         } else if (Array.isArray(cur)) {
             for (var i = 0, l = cur.length; i < l; i++)
-                recurse(cur[i], prop + "[" + i + "]");
+                recurse(cur[i], prop + ":" + i);
             if (l == 0) result[prop] = [];
         } else {
             var isEmpty = true;
